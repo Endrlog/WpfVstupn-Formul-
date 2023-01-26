@@ -1,0 +1,80 @@
+﻿<Window x:Class="WpfVstupníFormulář.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfVstupníFormulář"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1153" Width="836"
+        Style="{StaticResource CorporateWindow}">
+    <Grid>
+        <TextBlock x:Name="tblName" HorizontalAlignment="Left" Height="40" Text="Jméno" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="24" 
+                 Style="{StaticResource CorporateTextBlock}"/>
+        <TextBlock x:Name="tblSurname" HorizontalAlignment="Left" Height="40" Text="Příjmení" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="24" Margin="0,79,0,0"
+                 Style="{StaticResource CorporateTextBlock}"/>
+        <TextBlock x:Name="tblBirth" HorizontalAlignment="Left" Height="40" Text="Rok Narození" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="24" Margin="0,158,0,0"
+                 Style="{StaticResource CorporateTextBlock}"/>
+        <TextBlock x:Name="tblEdu" HorizontalAlignment="Left" Height="40" Text="Nejvyšší dokončené vzdělání" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="24" Margin="0,237,0,0"
+                 Style="{StaticResource CorporateTextBlock}"/>
+        <TextBlock x:Name="tblWorkPos" HorizontalAlignment="Left" Height="40" Text="Pracovní pozice" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="24" Margin="0,316,0,0"
+                 Style="{StaticResource CorporateTextBlock}"/>
+        <TextBlock x:Name="tblPay" HorizontalAlignment="Left" Height="40" Text="Hrubý plat" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" FontSize="24" Margin="0,395,0,0"
+                 Style="{StaticResource CorporateTextBlock}"/>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="40" Margin="400,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" FontSize="24"
+                 Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 LostFocus="tbName_LostFocus"
+                 Style="{StaticResource CorporateTextBox}"/>
+        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Height="40" Margin="400,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" FontSize="24"
+                 Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 LostFocus="tbSurname_LostFocus"
+                 Style="{StaticResource CorporateTextBox}"/>
+        <TextBox x:Name="tbBirth" HorizontalAlignment="Left" Height="40" Margin="400,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" FontSize="24"
+                 Text="{Binding Birth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="4" MaxLines="1"
+                 LostFocus="tbBirth_LostFocus"
+                 Style="{StaticResource CorporateTextBox}"/>
+        <TextBox x:Name="tbWorkPosition" HorizontalAlignment="Left" Height="40" Margin="400,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" FontSize="24"
+                 Text="{Binding Position, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 LostFocus="tbWorkPosition_LostFocus"
+                 Style="{StaticResource CorporateTextBox}"/>
+        <TextBox x:Name="tbPay" HorizontalAlignment="Left" Height="40" Margin="400,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" FontSize="24"
+                 Text="{Binding Pay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 LostFocus="tbPay_LostFocus"
+                 Style="{StaticResource CorporateTextBox}"/>
+        <Button x:Name="btRemove" Content="Odstranit" HorizontalAlignment="Left" Height="50" Margin="10,519,0,0" VerticalAlignment="Top" Width="390" FontSize="24" FontWeight="Bold"
+                Click="btRemove_Click"
+                Style="{StaticResource CorporateButton}"/>
+        <Button x:Name="btAdd" Content="Přidat" HorizontalAlignment="Left" Height="50" Margin="400,519,0,0" VerticalAlignment="Top" Width="390" FontSize="24" FontWeight="Bold"
+                Click="btAdd_Click" Visibility="Hidden"
+                Style="{StaticResource CorporateButton}"/>
+        <Button x:Name="btSave" Content="Uložit" HorizontalAlignment="Left" Height="50" Margin="10,569,0,0" VerticalAlignment="Top" Width="390" FontSize="24" FontWeight="Bold"
+                Click="BtSave_Click"
+                Style="{StaticResource CorporateButton}"/>
+        <Button x:Name="btLoad" Content="Načíst" HorizontalAlignment="Left" Height="50" Margin="400,569,0,0" VerticalAlignment="Top" Width="390" FontSize="24" FontWeight="Bold"
+                Click="btLoad_Click"
+                Style="{StaticResource CorporateButton}"/>
+        <ComboBox x:Name="cbEdu" HorizontalAlignment="Left" Height="40" Margin="400,237,0,0" VerticalAlignment="Top" Width="375" IsReadOnly="True" FontSize="24"
+                  Text="{Binding Education, Mode=TwoWay}">
+            <ComboBoxItem Content="Základní" FontSize="24"
+                          Style="{StaticResource CorporateComboBoxItem}"/>
+            <ComboBoxItem Content="Střední" FontSize="24"
+                          Style="{StaticResource CorporateComboBoxItem}"/>
+            <ComboBoxItem Content="Vysoké" FontSize="24"
+                          Style="{StaticResource CorporateComboBoxItem}"/>
+        </ComboBox>
+        <TextBlock x:Name="tbStatus" HorizontalAlignment="Center" Margin="0,624,0,448" TextWrapping="Wrap" 
+                Text="{Binding Status}" Width="780" FontSize="24"
+                Style="{StaticResource CorporateTextBlock}"/>
+        <Rectangle x:Name="rctName" HorizontalAlignment="Left" Height="40" Margin="775,0,0,0" VerticalAlignment="Top" Width="25" Fill="Red" Visibility="Visible"/>
+        <Rectangle x:Name="rctSurname" HorizontalAlignment="Left" Height="40" Margin="775,79,0,0" VerticalAlignment="Top" Width="25" Fill="Red" Visibility="Visible"/>
+        <Rectangle x:Name="rctBirth" HorizontalAlignment="Left" Height="40" Margin="775,158,0,0" VerticalAlignment="Top" Width="25" Fill="Red" Visibility="Hidden"/>
+        <Rectangle x:Name="rctWorkPosition" HorizontalAlignment="Left" Height="40" Margin="775,316,0,0" VerticalAlignment="Top" Width="25" Fill="Red" Visibility="Visible"/>
+        <Rectangle x:Name="rctPay" HorizontalAlignment="Left" Height="40" Margin="775,395,0,0" VerticalAlignment="Top" Width="25" Fill="Red" Visibility="Hidden"/>
+        <TextBlock x:Name="tblNameError" HorizontalAlignment="Left" Height="39" Margin="400,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" Foreground="Red" Text="Musí být zadáno"/>
+        <TextBlock x:Name="tblSurnameError" HorizontalAlignment="Left" Height="39" Margin="400,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" Foreground="Red" Text="Musí být zadáno"/>
+        <TextBlock x:Name="tblBirthError" HorizontalAlignment="Left" Height="39" Margin="400,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" Foreground="Red"/>
+        <TextBlock x:Name="tblWorkPositionError" HorizontalAlignment="Left" Height="39" Margin="400,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" Foreground="Red" Text="Musí být zadáno"/>
+        <TextBlock x:Name="tblPayError" HorizontalAlignment="Left" Height="39" Margin="400,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" Foreground="Red"/>
+        <ListView x:Name="lsvOutput" HorizontalAlignment="Center" Height="407" Margin="0,694,0,0" VerticalAlignment="Top" Width="778" d:ItemsSource="{d:SampleData ItemCount=5}"
+                Style="{StaticResource CorporateListView}"/>
+    </Grid>
+</Window>
